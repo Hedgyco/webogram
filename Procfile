@@ -1,1 +1,1 @@
-web: node server.js $PORT hedgy-chat.herokuapp.com
+web: node server.js $PORT
