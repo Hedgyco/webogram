@@ -96,12 +96,13 @@ StaticServlet.MimeMap = {
 
 StaticServlet.prototype.handleRequest = function(req, res) {
   var self = this;
-  console.log("foo", req.url.href)
+  console.log("href", req.url.href)
+  console.log("host", req.headers.host)
   if (req.headers['x-forwarded-proto']!='https') {
 //  if (req.connection.encrypted) {
     console.log("redirect", req.headers['x-forwarded-proto'], req.url);
     //return self.sendForbidden_(req, res, "foo");
-    return self.sendRedirect_(req, res, 'http://' + req.url.host + '/' + req.url.path)
+    return self.sendRedirect_(req, res, 'https://' + req.headers.host + '/' + req.url.path)
   }
   if (req.url.pathname == '/') {
     req.url.pathname = "/index.html"
