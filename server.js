@@ -102,7 +102,7 @@ StaticServlet.prototype.handleRequest = function(req, res) {
 //  if (req.connection.encrypted) {
     console.log("redirect", req.headers['x-forwarded-proto'], req.url);
     //return self.sendForbidden_(req, res, "foo");
-    return self.sendRedirect_(req, res, 'https://' + req.headers.host + '/' + req.url.path)
+    return self.sendRedirect_(req, res, 'https://' + req.headers.host + (req.url.path[0]==='/' ? "" : '/') + req.url.path)
   }
   if (req.url.pathname == '/') {
     req.url.pathname = "/index.html"
