@@ -97,7 +97,7 @@ StaticServlet.MimeMap = {
 
 StaticServlet.prototype.handleRequest = function(req, res) {
   var self = this;
-  if (req.headers.host != "localhost" && req.headers['x-forwarded-proto']!='https') {
+  if (req.headers['x-forwarded-proto'] && req.headers['x-forwarded-proto']!='https') {
     console.log("redirect", req.headers['x-forwarded-proto'], req.url);
     return self.sendRedirect_(req, res, 'https://' + req.headers.host + (req.url.path[0]==='/' ? "" : '/') + req.url.path)
   }
