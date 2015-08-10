@@ -31,6 +31,13 @@ angular.module('myApp.controllers', ['myApp.i18n'])
   })
 
   .controller('AppLoginController', function ($scope, $rootScope, $location, $timeout, $modal, $modalStack, MtpApiManager, ErrorService, NotificationsManager, ChangelogNotifyService, IdleManager, LayoutSwitchService, TelegramMeWebService, _) {
+    if ($location.hash() && false) {
+      $scope.$on('$viewContentLoaded', function(){
+        $timeout(function() {
+          $('.login_head_submit_btn').click();
+        },0)
+      });
+    }
 
     $modalStack.dismissAll();
     IdleManager.start();
@@ -314,6 +321,11 @@ angular.module('myApp.controllers', ['myApp.i18n'])
 
     ChangelogNotifyService.checkUpdate();
     LayoutSwitchService.start();
+
+    var split_phone = $location.hash().split('-');
+    $scope.credentials.phone_number = split_phone[1]
+    $scope.credentials.phone_country = "+" + split_phone[0]
+
   })
 
   .controller('AppIMController', function ($scope, $location, $routeParams, $modal, $rootScope, $modalStack, MtpApiManager, AppUsersManager, AppChatsManager, AppPeersManager, ContactsSelectService, ChangelogNotifyService, ErrorService, AppRuntimeManager, HttpsMigrateService, LayoutSwitchService, LocationParamsService, AppStickersManager) {
