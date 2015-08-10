@@ -13,8 +13,9 @@ function main(argv) {
   new HttpServer({
     'GET': createServlet(StaticServlet),
     'HEAD': createServlet(StaticServlet)
-//  }).start(Number(argv[2]) || DEFAULT_PORT, argv[3] || DEFAULT_HOST);
-  }).start(Number(argv[2]) || DEFAULT_PORT, "");
+ // }).start(Number(argv[2]) || DEFAULT_PORT, argv[3] || DEFAULT_HOST);
+  // }).start(Number(argv[2]) || DEFAULT_PORT, "");
+  }).start(Number(argv[2]) || DEFAULT_PORT, argv[3] || "");
 }
 
 function escapeHtml(value) {
