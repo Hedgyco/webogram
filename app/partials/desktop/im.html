@@ -88,7 +88,14 @@
           <p class="im_dialogs_empty_lead" my-i18n="im_welcome_text"></p>
           <button type="button" class="btn btn-primary btn-sm" ng-click="openSettings()" my-i18n="im_open_settings"></button>
         </div>
-        <div ng-switch-default class="im_history_not_selected" my-vertical-position="0.35" padding="true" my-i18n="im_select_a_chat"></div>
+        <div ng-switch-default class="im_history_not_selected" my-vertical-position="0.35" padding="true" xmy-i18n="im_select_a_chat">
+          To beging trading, please enter the HOOT Chat room located in the sidebar.
+          <br><br>
+          (If you don’t see the HOOT Chat room your account is still pending approval.  Please check back shortly.)
+          <br><br>
+          Happy Trading,<br>
+          The Hedgy Team
+        </div>
       </div>
 
       <div ng-show="!state.notSelected &amp;&amp; !state.loaded" class="im_history_not_selected" my-vertical-position="0.35" padding="true">
