@@ -110,7 +110,7 @@ angular.module('myApp.controllers', ['myApp.i18n'])
       var i, country;
       for (i = 0; i < Config.CountryCodes.length; i++) {
         country = Config.CountryCodes[i];
-        if (country[0] == countryIso2) {
+        if (country[0] === countryIso2) {
           return selectCountry({name: _(country[1] + '_raw'), code: country[2]});
         }
       }
@@ -322,10 +322,13 @@ angular.module('myApp.controllers', ['myApp.i18n'])
     ChangelogNotifyService.checkUpdate();
     LayoutSwitchService.start();
 
-    var split_phone = $location.hash().split('-');
-    $scope.credentials.phone_number = split_phone[1]
-    $scope.credentials.phone_country = "+" + split_phone[0]
-
+    $timeout(function(){
+      if ($location.hash()){
+        var split_phone = $location.hash().split('-');
+        $scope.credentials.phone_number = split_phone[1]
+        $scope.credentials.phone_country = "+" + split_phone[0]
+      }
+    }, 0)
   })
 
   .controller('AppIMController', function ($scope, $location, $routeParams, $modal, $rootScope, $modalStack, MtpApiManager, AppUsersManager, AppChatsManager, AppPeersManager, ContactsSelectService, ChangelogNotifyService, ErrorService, AppRuntimeManager, HttpsMigrateService, LayoutSwitchService, LocationParamsService, AppStickersManager) {
