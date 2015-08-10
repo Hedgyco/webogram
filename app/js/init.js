@@ -107,6 +107,7 @@
       '<link rel="stylesheet" href="css/' + (Config.Mobile ? 'mobile.css' : 'desktop.css') + '" />'
     );
 
+    locale = 'en-us'; // Force english because Hedgy text changes work only for english
     if (!locale) {
       locale = (navigator.language || '').toLowerCase();
       locale = Config.I18n.aliases[locale] || locale;
