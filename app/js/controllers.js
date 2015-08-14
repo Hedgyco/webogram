@@ -12,6 +12,7 @@
 angular.module('myApp.controllers', ['myApp.i18n'])
 
   .controller('AppWelcomeController', function($scope, $location, MtpApiManager, ErrorService, ChangelogNotifyService, LayoutSwitchService) {
+    mixpanel.track($location.url());
     MtpApiManager.getUserID().then(function (id) {
       if (id) {
         $location.url('/im');
@@ -31,6 +32,9 @@ angular.module('myApp.controllers', ['myApp.i18n'])
   })
 
   .controller('AppLoginController', function ($scope, $rootScope, $location, $timeout, $modal, $modalStack, MtpApiManager, ErrorService, NotificationsManager, ChangelogNotifyService, IdleManager, LayoutSwitchService, TelegramMeWebService, _) {
+    mixpanel.track($location.url());
+    console.log ("foo", $scope)
+
     if ($location.hash() && false) {
       $scope.$on('$viewContentLoaded', function(){
         $timeout(function() {
@@ -332,6 +336,7 @@ angular.module('myApp.controllers', ['myApp.i18n'])
   })
 
   .controller('AppIMController', function ($scope, $location, $routeParams, $modal, $rootScope, $modalStack, MtpApiManager, AppUsersManager, AppChatsManager, AppPeersManager, ContactsSelectService, ChangelogNotifyService, ErrorService, AppRuntimeManager, HttpsMigrateService, LayoutSwitchService, LocationParamsService, AppStickersManager) {
+    mixpanel.track($location.url());
 
     $scope.$on('$routeUpdate', updateCurDialog);
 
