@@ -33,7 +33,6 @@ angular.module('myApp.controllers', ['myApp.i18n'])
 
   .controller('AppLoginController', function ($scope, $rootScope, $location, $timeout, $modal, $modalStack, MtpApiManager, ErrorService, NotificationsManager, ChangelogNotifyService, IdleManager, LayoutSwitchService, TelegramMeWebService, _) {
     mixpanel.track($location.url());
-    console.log ("foo", $scope)
 
     if ($location.hash() && false) {
       $scope.$on('$viewContentLoaded', function(){
